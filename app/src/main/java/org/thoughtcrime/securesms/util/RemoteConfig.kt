@@ -1242,7 +1242,7 @@ object RemoteConfig {
   @get:JvmName("pinLimit")
   val pinLimit: Int by remoteInt(
     key = "global.pinnedMessageLimit",
-    defaultValue = 3,
+    defaultValue = Int.MAX_VALUE,
     hotSwappable = true
   )
 
