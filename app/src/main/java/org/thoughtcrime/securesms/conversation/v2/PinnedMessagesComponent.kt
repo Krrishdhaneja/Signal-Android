@@ -236,7 +236,6 @@ fun Heading(selectedIndex: Int, size: Int) {
             .width(2.dp)
             .weight(1f)
             .background(
-              // fix the below code such that it works for 2 pinned msgs
               color = if (
                   (i == 0 && selectedIndex == 0) ||
                   (i == 1 && ((size == 2 && selectedIndex == size - 1) || (size > 2 && selectedIndex != 0 && selectedIndex != size - 1))) ||
