@@ -228,7 +228,7 @@ fun Heading(selectedIndex: Int, size: Int) {
     Column(
       modifier = Modifier.fillMaxHeight().padding(vertical = 8.dp)
     ) {
-      for (i in 0 until size) {
+      for (i in 0 until  minOf(size, 3)) {
         Box(
           modifier = Modifier
             .padding(vertical = 2.dp)
@@ -236,7 +236,12 @@ fun Heading(selectedIndex: Int, size: Int) {
             .width(2.dp)
             .weight(1f)
             .background(
-              color = if (i == selectedIndex) {
+              // fix the below code such that it works for 2 pinned msgs
+              color = if (
+                  (i == 0 && selectedIndex == 0) ||
+                  (i == 1 && ((size == 2 && selectedIndex == size - 1) || (size > 2 && selectedIndex != 0 && selectedIndex != size - 1))) ||
+                  (i == 2 && selectedIndex == size - 1)
+                ) {
                 MaterialTheme.colorScheme.onSurface
               } else if (DynamicTheme.isDarkTheme(LocalContext.current)) {
                 MaterialTheme.colorScheme.secondaryContainer
